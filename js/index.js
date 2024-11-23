@@ -1,46 +1,53 @@
-let usedIndices = new Set();
+let Quotes =[
+    {
+        author: "-- Mark Twain",
+        quote:"“Good friends, good books, and a sleepy conscience: this is the ideal life.”",
+    },
+    {
+        author: "-- Mother Teresa",
+        quote:"“Not all of us can do great things. But we can do small things with great love.”",
+    },
+    {
+        author:"-- Oscar Wilde",
+        quote:"“Be yourself; everyone else is already taken.”",
+    },
+    {
+        author: "-- Mahatma Gandhi",
+        quote:"“Without music, life would be a mistake.”",
+    },
+    {
+        author:"-- Marcus Tullius Cicero",
+        quote:"“A room without books is like a body without a soul.”",
+    },
+    {
+        author:"-- Frank Zappa",
+        quote:"“So many books, so little time.”",
+    },
+    {
+        author: "-- Elbert Hubbard",
+        quote:"“Live as if you were to die tomorrow. Learn as if you were to live forever.”",
+    },
+    {
+        author: "--  Mark Twain",
+        quote:"“If you tell the truth, you don't have to remember anything.”",
+    },
+];
+let newIndex;
+let lastIndex;
+let displayedQuotes = [];
 
 function randomQuote() {
-    var quoteAuthor = [
-        "-- Oscar Wilde", "-- Marilyn Monroe", "-- Frank Zappa", "-- Albert Einstein", 
-        "-- Marcus Tullius Cicero", "-- Bernard M. Baruch", "-- William W. Purkey", 
-        "-- Dr. Seuss", "-- Mae West", "-- Mahatma Gandhi", "-- Robert Frost", 
-        "-- J.K. Rowling", "-- Albert Camus", "-- Mark Twain", "-- Maya Angelou", 
-        "-- Elbert Hubbard", "-- Oscar Wilde", "-- Mahatma Gandhi"
-    ];
-
-    var quotesText = [
-        '“Be yourself; everyone else is already taken.”', 
-        "“Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”",
-        "“So many books, so little time.”", 
-        "“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.”", 
-        "“A room without books is like a body without a soul.”", 
-        "“Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.”", 
-        "“You know you're in love when you can't fall asleep because reality is finally better than your dreams.”", 
-        "“You only live once, but if you do it right, once is enough.”", 
-        "“Be the change that you wish to see in the world.”", 
-        "“In three words I can sum up everything I've learned about life: it goes on.”", 
-        "“If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals.”", 
-        "“If you tell the truth, you don't have to remember anything.”", 
-        "“A friend is someone who knows all about you and still loves you.”", 
-        "“To live is the rarest thing in the world. Most people exist, that is all.”", 
-        "“Always forgive your enemies; nothing annoys them so much.”", 
-        "“Live as if you were to die tomorrow. Learn as if you were to live forever.”", 
-        "“We accept the love we think we deserve.”", 
-        "“Without music, life would be a mistake.”"
-    ];
-
-  
-  if (usedIndices.size === quotesText.length) {
-    usedIndices.clear(); 
+if(displayedQuotes.length === Quotes.length){
+    displayedQuotes = [];
 }
 
-let randomIndex;
 do {
-    randomIndex = Math.floor(Math.random() * quotesText.length);
-} while (usedIndices.has(randomIndex));
+    newIndex = Math.floor(Math.random() * Quotes.length);
+} while (newIndex == lastIndex || displayedQuotes.includes(newIndex));
 
-usedIndices.add(randomIndex);
-document.getElementById("quoteText").innerHTML = quotesText[randomIndex];
-document.getElementById("quoteAuthor").innerHTML = quoteAuthor[randomIndex];
+lastIndex = newIndex;
+displayedQuotes.push(newIndex);
+
+document.getElementById("quoteText").innerHTML = Quotes[newIndex].quote;
+document.getElementById("quoteAuthor").innerHTML = Quotes[newIndex].author;
 }
